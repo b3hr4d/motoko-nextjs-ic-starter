@@ -20,22 +20,15 @@ Installing dependencies:
 
 - Run `yarn install` or `npm install`
 
-  For extract candid definition from canister WASM:
-
-- Run `yarn candid:install` or `npm run candid:install`
-
-  For transforming Wasm canisters running on the Internet Computer:
-
-- Run `yarn wasm:install` or `npm run wasm:install`
-
 Running Local Internet Computer:
 
 2. Run `yarn dfx:start` or `npm run dfx:start`
 
 Deploying to the Local Internet Computer:
 
-3.1 Run `yarn deploy` or `npm run deploy`
-3.2 Run `yarn identity:deploy` or `npm run identity:deploy`
+3.1 Run `yarn dfx:pull` or `npm run dfx:pull`
+3.2 Run `yarn dfx:identity` or `npm run dfx:identity`
+3.3 Run `yarn deploy` or `npm run deploy`
 
 Running Next.js app:
 
@@ -57,5 +50,4 @@ Running Next.js app:
 - [DFINITY Canister SDK](https://sdk.dfinity.org/docs/quickstart/local-quickstart.html)
 - [Motoko](https://internetcomputer.org/docs/current/motoko/main/motoko)
 - [Next.js](https://nextjs.org/)
-- [ic-wasm](https://github.com/dfinity/ic-wasm)
 - [ic-reactor](https://github.com/B3Pay/ic-reactor)

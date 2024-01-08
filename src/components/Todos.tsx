@@ -1,13 +1,12 @@
+import { ToDo } from "declarations/todo/todo.did"
 import React from "react"
+import { useQueryCall } from "service/todo"
 import Todo from "./Todo"
-import { useActor } from "@ic-reactor/react"
-import { TodoApp } from "pages/_app"
+import ClearTodo from "./ClearTodo"
 
 interface TodosProps {}
 
 const Todos: React.FC<TodosProps> = ({}) => {
-  const { useQueryCall } = useActor<TodoApp>()
-
   const { data, error, loading } = useQueryCall({
     functionName: "getAllTodos",
     autoRefresh: true
@@ -16,11 +15,24 @@ const Todos: React.FC<TodosProps> = ({}) => {
   return (
     <div>
       <section>
-        <label>Todos: &nbsp;</label>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "5px"
+          }}
+        >
+          <label>Todos: &nbsp;</label>
+          <ClearTodo />
+        </div>
         {loading ? <span>Loading...</span> : null}
         {error ? <span>Error: {JSON.stringify(error)}</span> : null}
-        {data && data.length > 0
-          ? data.map(([id, todo]) => <Todo {...todo} key={id} id={id} />)
+        {data && data[0] && data[0].length > 0
+          ? data[0].map((todo: ToDo) => (
+              <Todo {...todo} key={todo.id.toString()} />
+            ))
           : null}
       </section>
     </div>
